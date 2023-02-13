@@ -1,8 +1,7 @@
 import os
 from fastapi import FastAPI, Response, File, UploadFile
-from fastapi.responses import FileResponse, RedirectResponse
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-import requests
 
 app = FastAPI()
 
@@ -18,7 +17,7 @@ app.add_middleware(
         allow_headers=["*"],
 )
 
-@app.post("/upload_tiff/")
+@app.post("/upload_tiff")
 async def upload_tile(tiff: UploadFile=File()):
     # Check type of file
     print(tiff.content_type)

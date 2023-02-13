@@ -18,6 +18,7 @@ Note: will likely have to refresh and clear the cache on the client side to see 
         - 'gdal_translate' switched between different filetypes
         - 'gdal_warp' allow the projection type of a geofile to be changed
         - 'gdal2tile.py' a script to transform .tif files into a tileset that can be used by a tile server
+        - 'gdal_merge.py' a script used to combine multiple tiffs into a single tiff file.
 2. Geotiff
     - file type which allows georeferencing
 3. Qgis (optional)
@@ -31,9 +32,9 @@ Note: will likely have to refresh and clear the cache on the client side to see 
     files describing the location, scale and orientation of and image.
     They should be stored in the same directory as a JPG image with the same
     name.
-    + line 1: lenght of a pixel in the x direction (horizontal)
-    + line 2: angle of rotation  (usually 0 or ingnored)
-    + line 3: angle of rotation  (usually 0 or ingnored)
+    + line 1: length of a pixel in the x direction (horizontal)
+    + line 2: angle of rotation  (usually 0 or ignored)
+    + line 3: angle of rotation  (usually 0 or ignored)
     + line 4: _negative_ length of a pixel in the y direction (vertical)
     + line 5: x coordinate at the center of the pixel in the top left corner of the image
     + line 6: y coordinate at the center of the pixel in the top left corner of the image
@@ -52,7 +53,7 @@ Note: will likely have to refresh and clear the cache on the client side to see 
         "gdal2tiles.py --xyz <name-of-geotiff-file>.tif <name-of-tileset-dir>/"
             + '-xyz' flag generates xyz (OSM Slippy Map standard) instead of TMS. [TMS y=0 for southern-most tile, OSM y=0 for northern-most tiles]
 3. Merge the tilesets
-    - Just use gdal2tiles.py again and it will automaticall merge them into the original tileset directory
+    - Just use gdal2tiles.py again and it will automatically merge them into the original tileset directory
     Note: I think it will use the most recent if there are two in the same location
 4. Run a tileset server
     - Have copied a basic tile server using Flask
@@ -60,6 +61,6 @@ Note: will likely have to refresh and clear the cache on the client side to see 
 5. Create an endpoint that will accept a tiff and add it to the tile set
 6. Clean up tile server
     - add attribution
-    - seperate function to add tiff to tile set. Still async
+    - separate function to add tiff to tile set. Still async
     - add things to readme (check mrl backend)
 7.
