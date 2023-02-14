@@ -6,6 +6,10 @@
 2. Translate to geotiff format with the following command
     "gdal_translate -if JPEG -of GTiff -a_srs EPSG:3857 <name-of-input-file>.jpg <name-of-output-file>.tif"
         + '-if' flag defines the input drive format for JPEG/JFIF (uses a .jpg and a .jgw file)
+2a. Merging tif files.
+  Move gdal_merge.py script into directory containing tifs to merge 
+  Run: 
+    "gdal_merge.py -o <name-of-output-file>.tif <name-of-input-file-1>.tif <name-of-input-file-N>.tif"
 3. Send a POST request to the `/upload_tiff` where the server is running, with the newly created .tiff file as form data under the name 'tiff'
 Note: will likely have to refresh and clear the cache on the client side to see the newly uploaded tile.
 ## Tech Stack
